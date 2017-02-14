@@ -100,4 +100,26 @@ FC$fecha_localizac <- toDate(FC$fecha_localizac)
 ## Descriptive Statistics
 ## ----------------------------------------
 
+#### Missing by year
+## FF
+FF$yearMiss    <- year(FF$fecha_desaparic)
+missingByearFF <- FF[, .N, by = c("yearMiss", "subtipo_motivo_")]
+## FC
+FC$yearMiss    <- year(FC$fecha_desaparic)
+missingByearFC <- FC[, .N, by = c("yearMiss", "subtipo_motivo_")]
+
 #### Loc by year
+## FF
+FF$yearLoc <- year(FF$fecha_localizac)
+locByearFF <- FF[, .N, by = c("estatus_localiz", "yearLoc", "subtipo_motivo_")]
+## FC
+FC$yearLoc <- year(FC$fecha_localizac)
+locByearFC <- FC[, .N, by = c("estatus_localiz", "yearLoc", "subtipo_motivo_")]
+
+#### Despach by year
+## FF
+FF$yearDesp <- year(FF$fecha_despacho_)
+despByearFF <- FF[, .N, by = c("estatus_localiz", "yearDesp", "subtipo_motivo_")]
+## FC
+FC$yearDesp <- year(FC$fecha_despacho_)
+despByearFC <- FC[, .N, by = c("estatus_localiz", "yearDesp", "subtipo_motivo_")]
