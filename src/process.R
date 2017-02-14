@@ -123,3 +123,15 @@ despByearFF <- FF[, .N, by = c("estatus_localiz", "yearDesp", "subtipo_motivo_")
 ## FC
 FC$yearDesp <- year(FC$fecha_despacho_)
 despByearFC <- FC[, .N, by = c("estatus_localiz", "yearDesp", "subtipo_motivo_")]
+
+## ----------------------------------------
+## Write results
+## ----------------------------------------
+## FF
+write.csv(missingByearFF, "../output/missingByearFF.csv", row.names = FALSE)
+write.csv(locByearFF, "../output/locByearFF.csv", row.names = FALSE)
+write.csv(despByearFF, "../output/despByearFF.csv", row.names = FALSE)
+## FC
+write.csv(missingByearFC, "../output/missingByearFC.csv", row.names = FALSE)
+write.csv(locByearFC, "../output/locByearFC.csv", row.names = FALSE)
+write.csv(despByearFC, "../output/despByearFC.csv", row.names = FALSE)
