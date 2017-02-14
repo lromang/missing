@@ -50,11 +50,11 @@ toDate <- function(dateCol){
 }
 
 ## Clean name
-cleanName <- function(names){
+cleanName <- function(names, nchars = 15){
     ## - Removes stopwords.
     ## - Removes spaces.
     ## - Removes non ascii letters.
-    ## - Trims to first 15 characters
+    ## - Trims to first n characters (default 15)
     names <- tolower(names) %>%
     str_replace_all(paste0('\\b',
                            paste(stopwords('spanish'),
@@ -62,7 +62,7 @@ cleanName <- function(names){
                            '\\b'), "") %>%
     str_replace_all(" +", "_")  %>%
     str_replace_all("[^A-Za-z_]", "") %>%
-        str_sub(0, 15)
+        str_sub(0, nchars)
     names
 }
 
